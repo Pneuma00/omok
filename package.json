@@ -6,6 +6,10 @@
   "author": "Pneuma <syca0714@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.17.1",
     "socket.io": "^4.1.2"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }
