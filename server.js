@@ -15,41 +15,42 @@ http.listen(process.env.PORT || 3000, () => {
 // =========================================================================
 
 const io = require('socket.io')(http)
+const Game = require('./class/game')
+const Player = require('./class/player')
 
-let white = false
+const game = new Game()
 
 io.on('connection', socket => {
     const id = socket.id
     const ip = socket.handshake.address.slice(7)
-    let nickname = id
-
-    console.log(socket.handshake)
 
     console.log(`A user connected (ID: ${id}, IP: ${ip})`)
 
-    socket.on('disconnect', () => {
-        console.log(`User disconnected (ID: ${id}, IP: ${ip})`)
-        io.emit('message', { content: `${nickname} 이(가) 퇴장했습니다.`, system: true })
-    })
-
-    socket.on('ping', () => {
-        socket.emit('pong')
-    })
+    const player = new Player({ id, ip: ip.split('.').slice(0, 2).join('.') })
 
     socket.on('join', name => {
-        nickname = name
-        io.emit('message', { content: `${nickname} 이(가) 접속했습니다.`, system: true })
+        player.setNickname(name)
+        io.emit('join', player)
+        io.emit('message', { content: `[+] ${player.nickname}(${player.ip}) 이(가) 접속했습니다.` })
+    })
+
+    socket.on('disconnect', () => {
+        console.log(`User disconnected (ID: ${id}, IP: ${ip})`)
+        io.emit('leave', player)
+        io.emit('message', { content: `[-] ${player.nickname}(${player.ip}) 이(가) 퇴장했습니다.` })
     })
 
     socket.on('message', msg => {
         if (typeof msg !== 'string') return
 
-        io.emit('message', { content: msg, player: `${nickname}(${ip})` })
+        io.emit('message', { content: msg, sender: player.nickname })
+    })
+
+    socket.on('participate', () => {
+        io.emit('message', { content: `${player.nickname}(${player.ip}) 이(가) 게임에 참가합니다.` })
     })
 
     socket.on('turn', data => {
-        data.color = white ? 'white' : 'black'
-        io.emit('turn', data)
-        white = !white
+        // io.emit('turn', data)
     })
 })

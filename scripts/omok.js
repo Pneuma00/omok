@@ -46,4 +46,4 @@ setInterval(() => {
         }
     }
     ctx.fillRect(cursor.x * grid - 5, cursor.y * grid - 5, 10, 10)
-}, 20)
+}, 10)

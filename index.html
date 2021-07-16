@@ -7,21 +7,27 @@
         <style></style>
     </head>
     <body>
-        <div className="wrapper" style="display: flex;">
-            <div className="chatWrapper">
-                <textarea rows=12 cols=30 id="chatArea" readonly></textarea>
-                <br>
-                <input size=27 id="msgInput">
-                <button size=5 id="sendButton">↑</button>
-            </div>
+        <div id="wrapper" style="display: flex;">
+            <nav>
+                <div id="playerlist"></div>
+                <hr>
+                <div id="chatWrapper">
+                    <textarea rows=12 cols=30 id="chatArea" readonly></textarea>
+                    <br>
+                    <input size=27 id="msgInput">
+                    <button size=5 id="sendButton">↑</button>
+                </div>
+            </nav>
             <div>
                 <img src='assets/board.png' width=600 height=600 style="position: absolute;">
                 <canvas width=560 height=560 id="board" style="position: absolute; margin-top: 18px; margin-left: 18px;"></canvas>
             </div>
         </div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.min.js"></script>
         <script src="scripts/main.js"></script>
         <script src="scripts/omok.js"></script>
         <script src="scripts/chat.js"></script>
+        <script src="scripts/players.js"></script>
     </body>
 </html>
