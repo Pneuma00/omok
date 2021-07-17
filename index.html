@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="initial-scale=1.0, width=device-width">
-        <title>omok.ga</title>
+        <title>오목</title>
         <style></style>
     </head>
     <body>
         <div id="wrapper" style="display: flex;">
             <nav>
-                <div id="playerlist"></div>
+                <div id="player-list"></div>
                 <hr>
                 <div id="chatWrapper">
                     <textarea rows=12 cols=30 id="chatArea" readonly></textarea>
@@ -19,8 +19,7 @@
                 </div>
             </nav>
             <div>
-                <img src='assets/board.png' width=600 height=600 style="position: absolute;">
-                <canvas width=560 height=560 id="board" style="position: absolute; margin-top: 18px; margin-left: 18px;"></canvas>
+                <canvas width=600 height=600 id="board"></canvas>
             </div>
         </div>
         <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>

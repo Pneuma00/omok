@@ -15,8 +15,7 @@ http.listen(process.env.PORT || 3000, () => {
 // =========================================================================
 
 const io = require('socket.io')(http)
-const Game = require('./class/game')
-const Player = require('./class/player')
+const Omok = require('./class/Omok')
 
 const game = new Game()
 

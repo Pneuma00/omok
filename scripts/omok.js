@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d')
 let board = Array(19 + 2).fill(null).map(() => Array(19 + 2).fill(0))
 let cursor = { x: 0, y: 0 }
 
-const grid = 31.25
+const grid = 30
 
 const getMousePosition = evt => {
     let rect = canvas.getBoundingClientRect();
@@ -24,14 +24,28 @@ canvas.addEventListener('mousemove', evt => {
     const pos = getMousePosition(evt)
     let x = Math.round(pos.x / grid), y = Math.round(pos.y / grid)
     cursor = { x, y }
+    update()
 })
 
 socket.on('turn', data => {
     board[data.x][data.y] = data.color
 })
 
-setInterval(() => {
+const update = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    ctx.fillStyle = '#ddbb66'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    ctx.fillStyle = '#000000'
+    for (let i = 1; i <= 19; i++) {
+        ctx.fillRect(i * grid, grid, 1, canvas.height - grid * 2)
+    }
+
+    for (let i = 1; i <= 19; i++) {
+        ctx.fillRect(grid, i * grid, canvas.width - grid * 2, 1)
+    }
+
     for (let i = 1; i <= 19; i++) {
         for (let j = 1; j <= 19; j++) {
             if (board[i][j] === 0) continue
@@ -46,4 +60,4 @@ setInterval(() => {
         }
     }
     ctx.fillRect(cursor.x * grid - 5, cursor.y * grid - 5, 10, 10)
-}, 10)
+}
