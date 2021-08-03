@@ -1,7 +1,7 @@
 {
   "name": "omok-ga",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "app.js",
   "repository": "https://github.com/Pneuma714/omok-ga.git",
   "author": "Pneuma <syca0714@gmail.com>",
   "license": "MIT",
@@ -10,6 +10,7 @@
     "socket.io": "^4.1.2"
   },
   "scripts": {
-    "start": "node server.js"
-  }
+    "start": "node app.js"
+  },
+  "devDependencies": {}
 }

@@ -4,29 +4,38 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="initial-scale=1.0, width=device-width">
         <title>오목</title>
-        <style></style>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+            body * {
+                font-family: 'Roboto', 'Nanum Gothic' sans-serif
+            }
+        </style>
     </head>
     <body>
-        <div id="wrapper" style="display: flex;">
+        <div id="wrapper" style="display: flex; justify-content: center; margin-top: 50px">
             <nav>
-                <div id="player-list"></div>
+                플레이어 목록
+                <div id="playerList"></div>
                 <hr>
+                채팅
                 <div id="chatWrapper">
                     <textarea rows=12 cols=30 id="chatArea" readonly></textarea>
                     <br>
                     <input size=27 id="msgInput">
                     <button size=5 id="sendButton">↑</button>
                 </div>
+                <hr>
+                <button id="participateButton">오목 참가하기</button>
             </nav>
             <div>
                 <canvas width=600 height=600 id="board"></canvas>
             </div>
         </div>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.min.js"></script>
-        <script src="scripts/main.js"></script>
-        <script src="scripts/omok.js"></script>
-        <script src="scripts/chat.js"></script>
-        <script src="scripts/players.js"></script>
+        <script src="script/main.js"></script>
+        <script src="script/omok.js"></script>
     </body>
 </html>

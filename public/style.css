@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap';
+    unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
+}
+
+body * {
+    font-family: 'Roboto', 'Noto Sans KR', sans-serif
+}

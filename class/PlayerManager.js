@@ -1,21 +1,19 @@
-const Player = require('./Player')
-
 class PlayerManager {
     
     constructor () {
-        this.list = []
+        this.cache = {}
     }
 
-    add ({ nickname, id, ip }) {
-        this.list.append(new Player({ nickname, id, ip }))
+    add (id, { nickname, ip }) {
+        this.cache[id] = { nickname, ip }
     }
 
-    remove ({ id }) {
-        this.list.splice(this.list.findIndex(p => p.id === id), 1)
+    remove (id) {
+        delete this.cache[id]
     }
 
-    get ({ id }) {
-        this.list.find(p => p.id === id)
+    get (id) {
+        return this.cache[id]
     }
 }
 
